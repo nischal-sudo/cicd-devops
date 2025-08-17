@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: nginx2-deployment
+  namespace: qa   # ✅ correct placement
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx2-container
+          image: nginx:latest
